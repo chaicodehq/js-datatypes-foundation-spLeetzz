@@ -46,21 +46,69 @@
  *   splitAndJoinRangoli("red,blue", ",", "-")  // => "red-blue"
  */
 export function repeatPattern(pattern, times) {
-  // Your code here
+  if (
+    typeof pattern !== "string" ||
+    !pattern ||
+    typeof times !== "number" ||
+    isNaN(times) ||
+    !Number.isInteger(times) ||
+    times < 1
+  ) {
+    return "";
+  }
+  return pattern.repeat(times);
 }
 
 export function extractRangoliCenter(design, start, end) {
-  // Your code here
+  if (
+    typeof design !== "string" ||
+    !design ||
+    typeof start !== "number" ||
+    isNaN(start) ||
+    !Number.isInteger(start) ||
+    typeof end !== "number" ||
+    isNaN(end) ||
+    !Number.isInteger(end)
+  ) {
+    return "";
+  }
+  return design.slice(start, end);
 }
 
 export function splitAndJoinRangoli(colorString, oldSep, newSep) {
-  // Your code here
+  if (
+    typeof colorString !== "string" ||
+    typeof oldSep !== "string" ||
+    typeof newSep !== "string"
+  ) {
+    return "";
+  }
+  let arr = colorString.split(oldSep);
+  return arr.join(newSep);
 }
 
 export function replaceRangoliColor(design, oldColor, newColor) {
-  // Your code here
+  if (
+    typeof design !== "string" ||
+    typeof oldColor !== "string" ||
+    typeof newColor !== "string"
+  ) {
+    return "";
+  }
+  return design.replaceAll(oldColor, newColor);
 }
 
 export function makeRangoliBorder(char, length) {
-  // Your code here
+  if (
+    typeof char !== "string" ||
+    !char ||
+    typeof length !== "number" ||
+    isNaN(length) ||
+    !Number.isInteger(length) ||
+    length < 1
+  ) {
+    return "";
+  }
+  let str = char.repeat(length);
+  return str.slice(0, length);
 }

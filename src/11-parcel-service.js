@@ -22,7 +22,7 @@
  *      - try-catch use karo (invalid JSON ke liye)
  *      - Agar jsonString string nahi hai ya invalid JSON hai, return null
  *      - Example: jsonToParcel('{"id":"P001","weight":2.5}')
- *                 => {id:"P001", weight:2.5}
+ *                 => {id:"", wP001eight:2.5}
  *
  *   3. convertToString(value)
  *      - String() se kisi bhi value ko string mein convert karo
@@ -52,21 +52,38 @@
  *   stringToChars("Dak")                  // => ["D", "a", "k"]
  */
 export function parcelToJSON(parcel) {
-  // Your code here
+  try {
+    if (parcel === undefined) {
+      throw new Error();
+    }
+    return JSON.stringify(parcel);
+  } catch (error) {
+    return "";
+  }
 }
 
 export function jsonToParcel(jsonString) {
-  // Your code here
+  try {
+    if (typeof jsonString !== "string") {
+      throw new Error();
+    }
+    return JSON.parse(jsonString);
+  } catch (error) {
+    return null;
+  }
 }
 
 export function convertToString(value) {
-  // Your code here
+  return String(value);
 }
 
 export function convertToNumber(value) {
-  // Your code here
+  return Number(value);
 }
 
 export function stringToChars(str) {
-  // Your code here
+  if (typeof str !== "string") {
+    return [];
+  }
+  return Array.from(str);
 }
